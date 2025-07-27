@@ -2,6 +2,11 @@
   description = "flake for pNix";
 
   inputs = {
+    
+    nixvim.url = "github:nix-community/nixvim";
+
+
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nur.url = "github:nix-community/NUR";
@@ -23,7 +28,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, chaotic, nur, zen-browser, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, chaotic, nur, zen-browser, nixvim,  ... }@inputs: {
 
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
