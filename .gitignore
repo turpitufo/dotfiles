@@ -4,3 +4,9 @@ result-*
 
 # Ignore automatically generated direnv output
 .direnv
+
+.idea/
+
+home/quickshell/
+
+.directory
