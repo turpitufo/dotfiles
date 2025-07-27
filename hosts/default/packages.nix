@@ -7,11 +7,11 @@ with pkgs;
 [
    ## SITEE
   nodejs_24
-
+  ripgrep
   ruff
 
 
-
+  python313Full
   kdePackages.merkuro
 
   hunspell

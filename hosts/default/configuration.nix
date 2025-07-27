@@ -173,7 +173,7 @@
     openssh.enable = true;
     dbus.enable = true;
     power-profiles-daemon.enable = true;
-    printing.enable = true;
+    printing.enable = false;
     blueman.enable = true;
     xserver.enable = true;
     displayManager.sddm = {
