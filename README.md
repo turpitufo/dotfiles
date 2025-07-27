@@ -1,0 +1,2 @@
+# pNix
+My nixos configuration.
