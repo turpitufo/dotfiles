@@ -52,6 +52,14 @@
 
   };
 
+  services.udev.extraRules = ''
+    KERNEL=="hwmon*", SUBSYSTEM=="hwmon", ATTRS{name}=="thinkpad_hwmon", SYMLINK+="hwmon-thinkpad"
+  '';
+
+
+
+
+
   nixpkgs.config.qt5 = {
     enable = true;
     platformTheme = "qt5ct";
