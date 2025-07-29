@@ -9,7 +9,8 @@ with pkgs;
   nodejs_24
   ripgrep
   ruff
-
+  bind
+  busybox
 
   python313Full
   kdePackages.merkuro
