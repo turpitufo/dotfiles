@@ -45,13 +45,14 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
+    blacklistedKernelModules = [ "thinkpad_acpi" ];
 
   };
 
-  #nixpkgs.config.qt5 = {
-  #  enable = true;
-  #  platformTheme = "qt5ct";
-  #};
+  nixpkgs.config.qt5 = {
+    enable = true;
+    platformTheme = "qt5ct";
+  };
 
 ##        ?HANDLED BY KDE?
 #  environment.variables = {
