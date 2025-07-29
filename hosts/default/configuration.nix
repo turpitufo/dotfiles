@@ -45,7 +45,10 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ "thinkpad_acpi" ];
+    kernelModules = [ "thinkpad_acpi" ];
+    extraModprobeConfig = ''
+      options thinkpad_acpi fan_control=1
+    '';
 
   };
 
