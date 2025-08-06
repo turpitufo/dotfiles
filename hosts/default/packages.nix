@@ -5,6 +5,16 @@
 
 with pkgs;
 [
+  #spyder
+
+
+
+  corepack
+  #pnpm
+  gemini-cli
+  nitch
+  webcamoid
+  #kdePackages.kamoso
    ## SITEE
   nodejs_24
   ripgrep
@@ -12,7 +22,7 @@ with pkgs;
   bind
   busybox
 
-  python313Full
+  #python313Full
   kdePackages.merkuro
 
   hunspell

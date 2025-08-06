@@ -52,9 +52,24 @@
 
   };
 
+  #services.udev.extraRules = ''
+  #  KERNEL=="hwmon*", SUBSYSTEM=="hwmon", ATTRS{name}=="thinkpad_hwmon", SYMLINK+="hwmon-thinkpad"
+  #'';
+
+  #services.udev.extraRules = ''
+  #  KERNEL=="hwmon*", SUBSYSTEM=="hwmon", ATTR{name}=="thinkpad", SYMLINK+="hwmon-thinkpad"
+  #'';
+  #services.udev.extraRules = ''
+  #  KERNEL=="hwmon*", SUBSYSTEM=="hwmon", ATTR{name}=="thinkpad", SYMLINK+="hwmon-thinkpad"
+  #'';
   services.udev.extraRules = ''
-    KERNEL=="hwmon*", SUBSYSTEM=="hwmon", ATTRS{name}=="thinkpad_hwmon", SYMLINK+="hwmon-thinkpad"
+    # Symlink for ThinkPad hwmon device
+    KERNEL=="hwmon*", SUBSYSTEM=="hwmon", ATTR{name}=="thinkpad", SYMLINK+="hwmon-thinkpad"
   '';
+
+
+
+
 
 
 
