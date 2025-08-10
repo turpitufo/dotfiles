@@ -35,10 +35,12 @@ programs = {
        vi = "nvim";
        vim = "nvim";
        nano = "nvim";
-       rb = "sudo nixos-rebuild switch --flake .#pNix";
-       rebuild = "sudo nixos-rebuild switch --flake .#pNix";
-       update = "nix flake update";
-       fu = "nix flake update";
+       rb = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
+       rebuild = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
+       update = "(cd /home/d/pNix && nix flake update)";
+       fu = "(cd /home/d/pNix && nix flake update)";
+       sync = "(cd /home/d/pNix && nix flake update && sudo nixos-rebuild switch --flake .#pNix)";
+ 
        };
    };  
    carapace.enable = true;
