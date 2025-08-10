@@ -27,16 +27,16 @@
 
   outputs = { self, nixpkgs, home-manager, chaotic, nur, zen-browser, nixvim,  ... }@inputs: {
 
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.pNix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit self inputs; };
       modules = [
-        ./hosts/default/configuration.nix
+        ./hosts/pNix/configuration.nix
         home-manager.nixosModules.home-manager
 	{
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.d = import ./hosts/default/home.nix;
+          home-manager.users.d = import ./hosts/pNix/home.nix;
           home-manager.extraSpecialArgs = { inherit inputs self; };
 
 	}
