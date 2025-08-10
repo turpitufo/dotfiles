@@ -30,6 +30,18 @@ programs = {
        prepend /home/myuser/.apps |
        append /usr/bin/env
        )
+
+       # Custom functions for complex commands
+       def fu [] {
+         cd /home/d/pNix
+         nix flake update
+       }
+       
+       def sync [] {
+         cd /home/d/pNix
+         nix flake update
+         sudo nixos-rebuild switch --flake .#pNix
+       }
        '';
        shellAliases = {
        vi = "nvim";
@@ -37,15 +49,10 @@ programs = {
        nano = "nvim";
        rb = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
        rebuild = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
-       update = "(cd /home/d/pNix && nix flake update)";
-       fu = "(cd /home/d/pNix && nix flake update)";
-       sync = "(cd /home/d/pNix && nix flake update && sudo nixos-rebuild switch --flake .#pNix)";
- 
        };
    };  
    carapace.enable = true;
    carapace.enableNushellIntegration = true;
-
    starship = { enable = true;
        settings = {
          add_newline = true;
@@ -57,3 +64,4 @@ programs = {
   };
 };
 }
+
