@@ -35,6 +35,10 @@ programs = {
        vi = "nvim";
        vim = "nvim";
        nano = "nvim";
+       rb = "sudo nixos-rebuild switch --flake .#pNix";
+       rebuild = "sudo nixos-rebuild switch --flake .#pNix";
+       update = "nix flake update";
+       fu = "nix flake update";
        };
    };  
    carapace.enable = true;
