@@ -1,0 +1,57 @@
+{ config, pkgs, lib, self, ... }:
+{
+  programs = {
+    nushell = {
+      enable = false;
+
+      extraConfig = ''
+        let carapace_completer = {|spans|
+          carapace $spans.0 nushell ...$spans | from json
+        }
+
+        $env.config = {
+          show_banner: false,
+          completions: {
+            case_sensitive: false
+            quick: true
+            partial: true
+            algorithm: "fuzzy"
+            external: {
+              enable: true
+              max_results: 100
+              completer: $carapace_completer
+            }
+          }
+        }
+
+        # Custom functions
+        def fu [] { cd /home/d/pNix; nix flake update }
+        def sync [] { cd /home/d/pNix; nix flake update; sudo nixos-rebuild switch --flake .#pNix }
+      '';
+
+      shellAliases = {
+        vi = "nvim";
+        vim = "nvim";
+        nano = "nvim";
+        rb = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
+        rebuild = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
+      };
+    };
+
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
+    starship = {
+      enable = true;
+      settings = {
+        add_newline = true;
+        character = {
+          success_symbol = "[➜](bold green) ";
+          error_symbol = "[✗](bold red) ";
+        };
+      };
+    };
+  };
+}
