@@ -31,7 +31,7 @@
         rebuild = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
         fu = "cd /home/d/pNix && nix flake update";
         sync = "cd /home/d/pNix && nix flake update && sudo nixos-rebuild switch --flake .#pNix";
-	ls = "eza";
+	ls = "eza --long --icons=always --git --header --color-scale --classify always";
       };
 
       shellAliases = {
