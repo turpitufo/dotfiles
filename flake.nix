@@ -41,6 +41,20 @@
           # Hardware modules
           nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
 
+          # Package overlays - must come before home-manager
+          {
+  nixpkgs.overlays = [
+    (final: prev: {
+      mistral-vibe = prev.mistral-vibe.overridePythonAttrs (old: {
+        disabledTests = (old.disabledTests or [ ]) ++ [
+          "test_slash_command_rejected_with_warning_when_busy"
+          "test_ui_queues_bash_submitted_while_command_running"
+        ];
+      });
+    })
+  ];
+	  }
+
           # Home Manager
           home-manager.nixosModules.home-manager
           {
@@ -51,17 +65,6 @@
               extraSpecialArgs = { inherit inputs self; };
             };
           }
-
-          # Package overlays
-          {
-            nixpkgs.overlays = [
-              (self: super: {
-                mistral-vibe = super.mistral-vibe.overrideAttrs (old: {
-                  doCheck = false;
-                });
-              })
-            ];
-	  }
         ];
       };
     };
