@@ -64,7 +64,7 @@ with pkgs;
   rar
   unzip
   droidcam
-  gruvbox-gtk-theme
+#  gruvbox-gtk-theme
   plasma-panel-spacer-extended
   nitch
   btop

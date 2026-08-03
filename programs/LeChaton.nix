@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.mistral-vibe.overrideAttrs (old: {
       doCheck = false;
+      doInstallCheck = false; 
     });
     settings = {
       tools.web_search.permission = "always";
