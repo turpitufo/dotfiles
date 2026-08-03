@@ -13,3 +13,6 @@ home/quickshell/
 
 # Private notes and documentation
 notes/
+
+# Secrets and private keys
+secrets/
