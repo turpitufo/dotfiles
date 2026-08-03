@@ -27,16 +27,16 @@
         vi = "nvim";
         vim = "nvim";
         nano = "nvim";
-        rb = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
-        rebuild = "sudo nixos-rebuild switch --flake /home/d/pNix#pNix";
-        fu = "cd /home/d/pNix && nix flake update";
-        sync = "cd /home/d/pNix && nix flake update && sudo nixos-rebuild switch --flake .#pNix";
+        rb = "sudo nixos-rebuild switch --flake /home/d/dotfiles#rocinante";
+        rebuild = "sudo nixos-rebuild switch --flake /home/d/dotfiles#rocinante";
+        fu = "cd /home/d/dotfiles && nix flake update";
+        sync = "cd /home/d/dotfiles && nix flake update && sudo nixos-rebuild switch --flake .#rocinante";
 	ls = "eza --long --icons=always --git --header --color-scale --classify always";
       };
 
       shellAliases = {
-        ll = "ls -la";
-        la = "ls -a";
+        ll = "eza --long --icons=always --git --header --color-scale --classify always";
+        la = "eza --icons=always --git --header --color-scale --classify always -a";
       };
 
       # Fish plugins (using fisher)
@@ -58,10 +58,6 @@
       };
     };
 
-    # Disable carapace nushell integration since we're using fish
-    carapace = {
-      enable = true;
-      enableNushellIntegration = false;
-    };
+    # Carapace settings are managed by shell-specific modules
   };
 }

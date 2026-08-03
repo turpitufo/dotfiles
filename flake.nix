@@ -1,5 +1,5 @@
 {
-  description = "pNix system configuration";
+  description = "NixOS configurations for rocinante and Hal";
 
   inputs = {
     # Core
@@ -27,45 +27,40 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
     in {
-      nixosConfigurations.pNix = lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit self inputs; };
+      nixosConfigurations = {
+        rocinante = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit self inputs; };
+          modules = [
+            ./hosts/rocinante/configuration.nix
+            nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs self; };
+              };
+            }
+          ];
+        };
 
-        modules = [
-          # System configuration
-          ./hosts/pNix/configuration.nix
-
-	  # Universal Allow Unfree
-	  { nixpkgs.config.allowUnfree = true; }
-
-          # Hardware modules
-          nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
-
-          # Package overlays - must come before home-manager
-          {
-  nixpkgs.overlays = [
-    (final: prev: {
-      mistral-vibe = prev.mistral-vibe.overridePythonAttrs (old: {
-        disabledTests = (old.disabledTests or [ ]) ++ [
-          "test_slash_command_rejected_with_warning_when_busy"
-          "test_ui_queues_bash_submitted_while_command_running"
-        ];
-      });
-    })
-  ];
-	  }
-
-          # Home Manager
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.d = import ./hosts/pNix/home.nix;
-              extraSpecialArgs = { inherit inputs self; };
-            };
-          }
-        ];
+        Hal = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit self inputs; };
+          modules = [
+            ./hosts/Hal/configuration.nix
+            nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs self; };
+              };
+            }
+          ];
+        };
       };
     };
 }
