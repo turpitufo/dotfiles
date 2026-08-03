@@ -3,8 +3,10 @@
 {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
+    package = pkgs.neovim-unwrapped;
     defaultEditor = true;
+    withRuby = false;
+    withPython3 = false;
     
     extraConfig = ''
       set mouse=a
