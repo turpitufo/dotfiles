@@ -11,8 +11,5 @@ home/quickshell/
 
 .directory
 
-# Private notes and documentation
-notes/
-
 # Secrets and private keys
 secrets/

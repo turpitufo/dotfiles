@@ -89,7 +89,7 @@
       
       -- Terminal
       vim.keymap.set('n', '<leader>tt', ':terminal<CR>', { silent = true, desc = 'Open terminal' })
-      vim.keymap.set('t', '<Esc>', '<C-\><C-n>', { silent = true, desc = 'Exit terminal mode' })
+      vim.keymap.set('t', '<Esc>', '<C-\\\><C-n>', { silent = true, desc = 'Exit terminal mode' })
       
       -- Plugin manager setup (lazy.nvim)
       local lazy_path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
