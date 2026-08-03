@@ -10,3 +10,6 @@ result-*
 home/quickshell/
 
 .directory
+
+# Private notes and documentation
+notes/
