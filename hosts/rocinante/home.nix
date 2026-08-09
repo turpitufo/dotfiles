@@ -18,17 +18,17 @@ in
   home.packages = allPackages;
 
   # Obsidian Flatpak socket fix (rocinante-specific)
-  systemd.user.services.obsidian-socket-fix = {
-    Unit = {
-      Description = "Fix Obsidian Flatpak CLI socket location";
-      WantedBy = [ "graphical-session.target" ];
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.coreutils}/bin/ln -sf /run/user/%i/.flatpak/md.obsidian.Obsidian/xdg-run/.obsidian-cli.sock /run/user/%i/.obsidian-cli.sock";
-      RemainAfterExit = true;
-    };
-  };
+  #systemd.user.services.obsidian-socket-fix = {
+  #  Unit = {
+  #    Description = "Fix Obsidian Flatpak CLI socket location";
+  #    WantedBy = [ "graphical-session.target" ];
+  #  };
+  #  Service = {
+  #    Type = "oneshot";
+  #    ExecStart = "${pkgs.coreutils}/bin/ln -sf /run/user/%i/.flatpak/md.obsidian.Obsidian/xdg-run/.obsidian-cli.sock /run/user/%i/.obsidian-cli.sock";
+  #    RemainAfterExit = true;
+  #  };
+  #};
 
   programs = {
     home-manager.enable = true;
@@ -39,5 +39,6 @@ in
       nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
     };
     #adb.enable = true;
+    obsidian.enable = true;
   };
 }

@@ -75,7 +75,7 @@
       nnoremap <leader>tt :terminal<CR>
       tnoremap <Esc> <C-\><C-n>
       
-      colorscheme catppuccin-mocha
+      colorscheme gruvbox
     '';
     
     extraPackages = with pkgs; [

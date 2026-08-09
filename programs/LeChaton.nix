@@ -9,6 +9,8 @@
     });
     settings = {
       tools.web_search.permission = "always";
-    };
+      ssl_verify = "true";
+      active_model = "devstral-latest";
+      };
   };
 }

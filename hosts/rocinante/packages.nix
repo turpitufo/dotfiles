@@ -5,6 +5,9 @@
 
 with pkgs;
 [
+  # School
+
+
   # Development
   vscode
   lazygit
@@ -46,6 +49,8 @@ with pkgs;
   firefox
 
   # System
+  fastfetch
+  nerdfetch
   eza
   czkawka
   ydotool
@@ -92,7 +97,6 @@ with pkgs;
   darkly
 
   # Fun
-  antigravity
   cowsay
 
 ]
