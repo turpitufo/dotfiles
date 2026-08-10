@@ -12,4 +12,5 @@ home/quickshell/
 .directory
 
 # Secrets and private keys
-secrets/
+#secrets/
+notes/roadmap.md
