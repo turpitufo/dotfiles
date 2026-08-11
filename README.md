@@ -1,62 +1,93 @@
-# ❄️ My NixOS Configuration
+# NixOS Configuration
 
-This repository holds the configuration for all my Linux systems.
-It includes both my servers, my laptop and my desktop.
+Flake-based NixOS and Home Manager configuration for rocinante (T480) and Hal (L15).
 
+## Features
 
-## Nix
+- NixOS 26.11 with flakes
+- Home Manager integration
+- KDE Plasma 6 desktop environment
+- AGE-encrypted secrets via agenix
+- Modular structure with shared modules
 
-I now manage all my configuration thanks to Nix.
-Everything is managed thanks to a [nix flake](https://nixos.wiki/wiki/Flakes): `flake.nix`.
-It relies heavily on the [Dendritic pattern](https://github.com/mightyiam/dendritic).
-Each file is a [flake-parts](https://flake.parts) module.
-
-### Repository structure
-
-Everything is stored under the `modules/` folder and imported automatically thanks to [vic/import-tree](https://github.com/vic/import-tree).
+## Structure
 
 ```
-├── flake.nix       # Entry-point of the flake
+.
+├── flake.nix              # Entry point
+├── flake.lock             # Lock file
+├── hosts/
+│   ├── Hal/               # HomeLab/gaming (L15)
+│   │   ├── configuration.nix
+│   │   ├── hardware-configuration.nix
+│   │   ├── home.nix
+│   │   └── packages.nix
+│   └── rocinante/         # Daily driver (T480)
+│       ├── configuration.nix
+│       ├── hardware-configuration.nix
+│       ├── home.nix
+│       └── packages.nix
 ├── modules/
-│   ├── flake/      # flake modules
-│   ├── home/       # shared home-manager modules
-│   ├── hosts/      # declaration of the NixOS/HM hosts
-│   └── nixos/      # shared nixos modules
-└── .secrets        # (age encrypted) secrets for each system
+│   ├── nixos/             # Shared NixOS modules
+│   └── home-manager/      # Shared Home Manager modules
+├── system/                # System-level modules
+│   ├── cider.nix
+│   └── greetd.nix
+├── programs/              # Home Manager programs
+│   ├── nvim.nix
+│   ├── fish.nix
+│   ├── nushell.nix
+│   └── LeChaton.nix
+├── overlays/              # Package overlays
+├── pkgs/                 # Custom packages
+├── secrets/               # AGE-encrypted secrets
+└── assets/                # Static assets
 ```
 
-## Systems
+## Hosts
 
-| Hostname      | Config type   | Comment                           |
-| :------------ | :-------------| :-------------------------------- |
-| `framework`   | NixOS         | Laptop                            |
-| `cuda`        | NixOS         | Personal workstation              |
-| `builder`     | home-manager  | Linux x86 builder                 |
-| `jrs`         | home-manager  | Jon Ringer's x86 builder          |
-| `vps`         | NixOS         | VPS (VPN, mail server, etc.)      |
-| `tank`        | NixOS         | NAS (ZFS, Nextcloud, etc.)        |
-| `backup`      | NixOS         | Backup (replication of `tank`)    |
+| Hostname    | Model | Use Case               |
+|-------------|-------|------------------------|
+| rocinante   | Lenovo T480 | School/web/programming |
+| Hal         | Lenovo L15  | Entertainment/game/HomeLab |
 
-### Linux working environment
+## Usage
 
-![](./.assets/screenshot.png)
+```bash
+# Build and switch to a host configuration
+sudo nixos-rebuild switch --flake /path/to/dotfiles#host
 
-Here are the programs I use on my working systems.
-I keep my configuration minimal and efficient.
+# Update flake inputs
+nix flake update
+```
 
-| Program               | Name                                                  |
-| :-------------------- | :-----------------------------------------------------|
-| Linux Distribution    | [NixOS](https://nixos.org/)                           |
-| Web Browser           | [Firefox](https://www.mozilla.org/en-US/firefox/new/) |
-| Window Manager        | [sway](https://swaywm.org/)                           |
-| Bar                   | [waybar](https://github.com/Alexays/Waybar)           |
-| Terminal Emulator     | [foot](https://codeberg.org/dnkl/foot)                |
-| Code Editor           | [Neovim](https://neovim.io/)                          |
-| Program Launcher      | [rofi](https://github.com/DaveDavenport/rofi)         |
-| Shell                 | [fish](https://fishshell.com/)                        |
-| PDF viewer            | [Zathura](https://pwmt.org/projects/zathura/)         |
+Replace `host` with `rocinante` or `Hal`.
 
+## Requirements
 
-## Acknowledgements
+- Nix with flakes and experimental features enabled
+- Hardware configurations are host-specific
+- Secrets managed via AGE encryption (agenix)
 
-Thanks to [@mightyiam](https://github.com/mightyiam) and [@drupol](https://github.com/drupol) for helping me migrating my configuration to the dendritic pattern.
+## Technologies
+
+- [Flakes](https://wiki.nixos.org/wiki/Flakes)
+- [Home Manager](https://wiki.nixos.org/wiki/Home_Manager)
+- [Agenix](https://wiki.nixos.org/wiki/Agenix) for secret management
+- KDE Plasma 6
+
+## Workaround: Mistral CLI
+
+For `mistral-vibe` package build issues with pytest:
+
+```nix
+package = pkgs.mistral-vibe.overrideAttrs (old: {
+  doInstallCheck = false;
+});
+```
+
+## Notes
+
+- Configuration combines previous separate repos for rocinante and Hal
+- Some hardware-specific settings remain in host configurations
+- Not yet fully "Nix Way" - work in progress toward declarative purity

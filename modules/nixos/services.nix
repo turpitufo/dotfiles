@@ -5,11 +5,7 @@
   services = {
     resolved = {
       enable = true;
-      #settings.Resolve.DNSStubListener = "no"; 
       settings.Resolve = {
-#        Domains = [ 
-#          "~." 
-#        ];
         DNSOverTLS = "true";
         DNSSEC = "false";
       };

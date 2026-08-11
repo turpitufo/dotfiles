@@ -20,6 +20,8 @@ with pkgs;
   webcamoid
   mpv
   haruna
+
+  # Audio
   cider-2
 
   # Network
@@ -80,5 +82,6 @@ with pkgs;
   # Fun
   cowsay
 
-
+  # Torrent
 ]
+

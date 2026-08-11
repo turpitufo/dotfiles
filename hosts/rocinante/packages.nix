@@ -5,9 +5,6 @@
 
 with pkgs;
 [
-  # School
-
-
   # Development
   vscode
   lazygit
@@ -19,7 +16,7 @@ with pkgs;
   nodejs_24
   ripgrep
   ruff
-  meld 
+  meld
 
   # Media
   scrcpy
@@ -29,14 +26,15 @@ with pkgs;
   tesseract4
   zxing
   kdePackages.kdenlive
-  kdePackages.ktorrent
   inkscape
   obs-studio
   webcamoid
   mpv
   haruna
-  cider-2
   onlyoffice-desktopeditors
+
+  # Audio
+  cider-2
 
   # Network
   eddie
@@ -69,7 +67,6 @@ with pkgs;
   rar
   unzip
   droidcam
-#  gruvbox-gtk-theme
   plasma-panel-spacer-extended
   nitch
   btop
@@ -99,4 +96,7 @@ with pkgs;
   # Fun
   cowsay
 
+  # Torrent
+  kdePackages.ktorrent
 ]
+

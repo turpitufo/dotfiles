@@ -11,7 +11,7 @@ in {
       type = types.enum ["cider" "cider-2"];
       default = "cider";
       description = ''
-        Choose the cider package to use, either the paid (2) or the free version
+        Choose the cider package version
       '';
     };
   };
@@ -51,7 +51,7 @@ in {
           '';
 
         meta = with lib; {
-          description = "Powerful music player that allows you listen to your favorite tracks with style";
+          description = "Cider music player";
           homepage = "https://cider.sh";
           license = licenses.unfree;
           mainProgram = "cider-2";

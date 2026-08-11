@@ -9,6 +9,7 @@ in
 
   imports = [ 
     ../../modules/home-manager/common.nix
+    ../../programs/fastfetch.nix
     ../../programs/fish.nix
     ../../programs/LeChaton.nix
     ../../programs/nvim.nix

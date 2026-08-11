@@ -15,6 +15,7 @@ in
 
   imports = [
     ../../modules/home-manager/common.nix
+    ../../programs/fastfetch.nix
     ../../programs/nushell.nix
     ../../programs/LeChaton.nix
     ../../programs/nvim.nix
