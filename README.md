@@ -63,7 +63,6 @@ sudo nixos-rebuild switch --flake /path/to/dotfiles#host
 nix flake update
 ```
 
-Replace `host` with `rocinante` or `Hal`.
 
 ## Requirements
 
