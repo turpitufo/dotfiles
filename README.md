@@ -90,6 +90,5 @@ package = pkgs.mistral-vibe.overrideAttrs (old: {
 
 ## Notes
 
-- Configuration combines previous separate repos for rocinante and Hal
 - Some hardware-specific settings remain in host configurations
 - Not yet fully "Nix Way" - work in progress toward declarative purity
