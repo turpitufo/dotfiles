@@ -2,6 +2,8 @@
 
 Flake-based NixOS and Home Manager configuration for rocinante (T480) and Hal (L15).
 
+![](assets/ss.png)
+
 ## Features
 
 - NixOS 26.11 with flakes
