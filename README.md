@@ -16,7 +16,7 @@ Flake-based NixOS and Home Manager configuration for rocinante (T480) and Hal (L
 
 ```
 .
-├── flake.nix              # Entry point
+├── flake.nix              # Flake file
 ├── flake.lock             # Lock file
 ├── hosts/
 │   ├── Hal/               # HomeLab/gaming (L15)
@@ -41,9 +41,9 @@ Flake-based NixOS and Home Manager configuration for rocinante (T480) and Hal (L
 │   ├── nushell.nix
 │   └── LeChaton.nix
 ├── overlays/              # Package overlays
-├── pkgs/                 # Custom packages
+├── pkgs/                  # Custom packages
 ├── secrets/               # AGE-encrypted secrets
-└── assets/                # Static assets
+└── assets/                # Wallpapers and screenshots
 ```
 
 ## Hosts
